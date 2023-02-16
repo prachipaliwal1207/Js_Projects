@@ -1,0 +1,56 @@
+input[type = button]{
+	background: whitesmoke;
+	color: black;
+	font-size: 20px;
+	padding: 20px;
+	margin-top: 12px;
+	margin-left: 5px;
+    width: 100px;
+    font-weight: bold;
+}
+
+.screen {
+	width: 310px;
+	height: 40px;
+	margin-left: 400px;
+}
+
+.screen:hover{
+	background: darkcyan;
+}
+
+.container .clear:hover{
+	background: red;
+}
+
+.keys{
+	width: 450px;
+	margin-top: 15px;
+	margin-left: 400px;
+
+}
+
+.container .clear{
+	background: mediumvioletred;
+}
+
+.keys .operator{
+	 background-color: #eebb24;
+}
+
+.keys .equal-sign {
+	background: powderblue;
+}
+
+.button:hover {
+	background: #eaeaea;
+}
+
+.equal-sign:hover {
+
+    background-color: #4e9ed4;
+}
+
+.operator:hover{
+	background: darkorange;
+}
