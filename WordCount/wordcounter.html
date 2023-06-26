@@ -40,14 +40,16 @@
         let char = text.length;
         document.getElementById('char').innerHTML = char;
 
-        text = text.trim();
-
-        let words = text.split(" ");
-
-        let cleanList = words.filter(function(elm) {
-          return el != "";
-        });
-        document.getElementById("word").innerHTML = cleanList.length;
+       
+ 
+       var count = 0;
+       var split = text.split(' ');
+       for (var i = 0; i < split.length; i++) {
+       	if (split[i] != "") {
+       		count ++;
+       	}
+       }
+       document.getElementById("word").innerHTML = count;
 
 		});
 	</script>
