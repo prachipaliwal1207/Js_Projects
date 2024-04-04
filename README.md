@@ -1,4 +1,4 @@
-                                                      **_JavaScript Projects Showcase_** 🚀 <br> <br>
+                                                      **_JavaScript Projects Showcase_** 🚀 
 Welcome to the JavaScript Projects Showcase! This repository contains a collection of JavaScript projects developed by prachipaliwal1207. Explore the list below to discover various projects and their latest updates.
 
 Projects List 📋
