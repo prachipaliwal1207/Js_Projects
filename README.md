@@ -1,7 +1,7 @@
                                                       **_JavaScript Projects Showcase_** 🚀 
 Welcome to the JavaScript Projects Showcase! This repository contains a collection of JavaScript projects developed by prachipaliwal1207. Explore the list below to discover various projects and their latest updates.
 
-                                                      **_Projects List_** 📋
+Projects List📋 <br>
 * AnalogClock: Simple analog clock project.
 * BgSwichter: Background color switcher project.
 * Calculator: Basic calculator project.
@@ -15,8 +15,8 @@ Welcome to the JavaScript Projects Showcase! This repository contains a collecti
 * WordCount: Word counting tool project.
 * WordGuess: Word guessing game project. <br>
 
-                                                      **_Usage_** 🛠️ 
+Usage 🛠️  <br>
 Feel free to explore each project individually by navigating to its respective folder. Each project may contain its own README file with detailed instructions on how to run and use the application.
 
-                                                      **_About the Author_** 👩‍💻
+About the Author 👩‍💻 <br>
 prachipaliwal1207 is passionate about JavaScript and loves creating fun and useful projects. Follow them on GitHub to stay updated on their latest creations!
