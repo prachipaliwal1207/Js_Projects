@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Word and Character counter</title>
 	<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
 
-		body{
-			padding: 50px 100px;
-		}
-		h2 ,p{
-          background: #0067B0;
-          text-align: center;
-          padding: 10px;
-          color: white;
-          margin: 0px;
-          width: 87.3%;
-		}
-        
-        textarea{
-        	width: 88.6%;
-        	border-color: £0067B0;
-        	font-size: 15px;
-        }
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+
+	h2,
+	p {
+		background: lightblue;
+		padding: 7px;
+		border-radius: 5px;
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	span {
+		font-weight: bold;
+		font-size: 18px;
+	}
 	</style>
 </head>
+
 <body>
-
-<h2>Word and Character Counter</h2>
-<textarea  id="textbox" cols="90" rows="14"> </textarea>
-	<p>
-		<span id="word">0</span> words and <span id="char"> 0 </span>characters
-	</p>
-
+	<div class="container">
+		<h2>Word and Character Counter</h2>
+		<textarea id="textbox" cols="90" rows="14"> </textarea>
+		<p>
+			<span id="word">0</span> words and <span id="char"> 0 </span>characters </p>
+	</div>
 	<script type="text/javascript">
-		let textbox = document.getElementById('textbox');
-		textbox.addEventListener('input' , function(){
-        var text = this.value;
-        let char = text.length;
-        document.getElementById('char').innerHTML = char;
-
-       
- 
-       var count = 0;
-       var split = text.split(' ');
-       for (var i = 0; i < split.length; i++) {
-       	if (split[i] != "") {
-       		count ++;
-       	}
-       }
-       document.getElementById("word").innerHTML = count;
-
-		});
+	let input = document.getElementById('textbox');
+	input.addEventListener("input", function() {
+		let value = input.value;
+		let count = 0;
+		let characterCount = value.trim().length;
+		let c = 0;
+		let split = value.split(' ')
+		for(let i = 0; i < split.length; i++) {
+			if(split[i] != '') {
+				count++;
+			}
+		}
+		document.getElementById("word").innerHTML = count;
+		document.getElementById("char").innerHTML = characterCount;
+	})
 	</script>
-
 </body>
+
 </html>
