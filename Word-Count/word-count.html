@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Word and Character Counter</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h2,
+        p {
+            background: lightblue;
+            padding: 7px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 14em;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Word and Character Counter</h2>
+        <textarea id="textbox" placeholder="Type your text here..."></textarea>
+        <p>
+            <span id="word">0</span> words and <span id="char">0</span> characters
+        </p>
+    </div>
+    <script type="text/javascript">
+        let input = document.getElementById('textbox');
+        input.addEventListener("input", function() {
+            let value = input.value;
+            let wordCount = 0;
+            let characterCount = 0;
+            
+            // Calculate word count
+            let words = value.trim().split(/\s+/);
+            wordCount = words.length === 1 && words[0] === '' ? 0 : words.length;
+
+            // Calculate character count
+            characterCount = value.replace(/\s+/g, '').length;
+
+            // Update the display
+            document.getElementById("word").textContent = wordCount;
+            document.getElementById("char").textContent = characterCount;
+        });
+    </script>
+</body>
+
+</html>
