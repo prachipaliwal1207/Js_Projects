@@ -1,120 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            text-align: center;
-            font-family: sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        #opponent-choice, #your-choice {
-            width: 200px;
-            height: 200px;
-            background-color: black;
-            border-radius: 50%;
-            margin: 10px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-        }
-
-        #choices {
-            width: 250px;
-            height: 80px;
-            margin: 20px auto;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        #choices img {
-            width: 60px;
-            height: 60px;
-            opacity: 0.6;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        #choices img:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        #your-score, #opponent-score {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rock Paper Scissors</title>
 </head>
-<body>
-    <h1 id="opponent-score">0</h1> 
-    <div id="opponent-choice"></div>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#opponent-choice, #your-choice {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #333;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+#choices {
+    width: 250px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#choices img {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+#choices img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+h3 {
+    margin: 20px 0;
+    font-size: 24px;
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+</style>
+<body>
+
+    <h3 id="opponent-score">Computer Score: 0</h3> 
+    <div id="opponent-choice"></div>
+    
     <div id="your-choice"></div>
     
     <div id="choices"></div>
-    
-    <h1 id="your-score">0</h1>
+ 
+    <h3 id="your-score">Your Score: 0</h3>
 
     <script type="text/javascript">
-        let yourScore = 0;
-        let opponentScore = 0;
+        var you;
+        var yourScore = 0;
+        var opponent;
+        var opponentScore = 0;
 
-        const choices = ["rock", "paper", "scissors"];
+        var choices = ["rock", "paper", "scissors"];
 
         window.onload = function () {
-            const choicesContainer = document.getElementById('choices');
-            choices.forEach(choice => {
-                const img = document.createElement("img");
-                img.id = choice;
-                img.src = choice + ".png";
-                img.alt = choice;
-                img.addEventListener("click", selectChoice);
-                choicesContainer.appendChild(img);
-            });
+            for (let i = 0; i < choices.length; i++) {
+                let choice = document.createElement("img");
+                choice.id = choices[i];
+                choice.src = choices[i] + ".png";
+                choice.alt = choices[i];
+                choice.addEventListener("click", selectChoice);
+                document.getElementById('choices').append(choice);
+            }
         }
 
         function selectChoice() {
-            const you = this.id;
+            you = this.id;
             document.getElementById('your-choice').style.backgroundImage = `url(${you}.png)`;
-
-            // Randomly select opponent's choice
-            const opponent = choices[Math.floor(Math.random() * 3)];
+            
+            // Random choice for opponent
+            opponent = choices[Math.floor(Math.random() * choices.length)];
             document.getElementById('opponent-choice').style.backgroundImage = `url(${opponent}.png)`;
 
-            // Determine winner
+            // Determine the winner
             if (you === opponent) {
-                // It's a tie, no score change
-            } else if (
-                (you === "rock" && opponent === "scissors") ||
-                (you === "scissors" && opponent === "paper") ||
-                (you === "paper" && opponent === "rock")
-            ) {
-                yourScore++;
+                // Tie - no score change
             } else {
-                opponentScore++;
+                if (you === "rock") {
+                    if (opponent === "scissors") {
+                        yourScore += 1;
+                    } else if (opponent === "paper") {
+                        opponentScore += 1;
+                    }
+                } else if (you === "scissors") {
+                    if (opponent === "paper") {
+                        yourScore += 1;
+                    } else if (opponent === "rock") {
+                        opponentScore += 1;
+                    }
+                } else if (you === "paper") {
+                    if (opponent === "rock") {
+                        yourScore += 1;
+                    } else if (opponent === "scissors") {
+                        opponentScore += 1;
+                    }
+                }
             }
 
-            document.getElementById('your-score').innerText = yourScore;
-            document.getElementById('opponent-score').innerText = opponentScore;
+            document.getElementById('your-score').innerText = `Your Score: ${yourScore}`;
+            document.getElementById('opponent-score').innerText = `Computer Score: ${opponentScore}`;
         }
     </script>
+</body>
+</html>
+
+</script>
 </body>
 </html>
