@@ -52,14 +52,11 @@
 		margin-top: 20px;
 		color: black;
 		border-radius: 15px;
+		margin-bottom: 10px;
 	}
 
 	input[type=text]:hover {
 		background: #E1EBEE;
-	}
-
-	input[type=button]:hover , input[type=submit]:hover{
-		font-size: 80%;
 	}
 	
 	input[type=submit] {
@@ -85,7 +82,8 @@
 		list-style-position: center;
 		list-style-type: none;
 		text-align: center;
-		padding: 10px;
+		padding: 20px;
+		border-radius: 20px;
 	}
 	
 	ul li {
@@ -94,7 +92,6 @@
 	}
 
 	ul li:hover{
-		font-size: 150%;
 		color: #13274F;
 	}
 	</style>
@@ -121,6 +118,7 @@
       	let item = document.getElementById('txt').value;
       	itemList.push(item);
       	viewList();
+      	 document.getElementById('txt').value = ''
       }
       
       

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Clock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: salmon;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, #fff, #ccc);
+            position: relative;
+            border: 6px solid #333;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .numbers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .numbers div {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .twelve {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .three {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .six {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nine {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .arrows {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .arrows::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .arrows div {
+            background-color: #333;
+            width: 4px;
+            height: 100px;
+            position: absolute;
+            transform-origin: bottom center;
+            bottom: 50%;
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .arrows .hour {
+            height: 80px;
+            background-color: #000;
+        }
+
+        .arrows .minute {
+            height: 100px;
+            background-color: #666;
+        }
+
+        .arrows .second {
+            height: 120px;
+            background-color: #e74c3c;
+        }
+
+        img {
+            width: 80px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="numbers">
+            <div class="twelve">12</div>
+            <div class="three">3</div>
+            <div class="six">6</div>
+            <div class="nine">9</div>
+        </div>
+        <div class="arrows">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Rolex_logo.svg/1200px-Rolex_logo.svg.png" alt="watch_logo">
+    </div>
+
+    <script>
+        const hourEl = document.querySelector('.hour');    
+        const minEl = document.querySelector('.minute');  
+        const secEl = document.querySelector('.second');  
+
+        function updateClock() {
+            const currentDate = new Date();
+            const hour = currentDate.getHours() % 12; // Convert to 12-hour format
+            const min = currentDate.getMinutes();
+            const sec = currentDate.getSeconds();
+            
+            const hourDeg = (hour + min / 60) * 30; // 360 degrees / 12 hours
+            const minDeg = (min + sec / 60) * 6;   // 360 degrees / 60 minutes
+            const secDeg = sec * 6;                // 360 degrees / 60 seconds
+            
+            hourEl.style.transform = `rotate(${hourDeg}deg)`;
+            minEl.style.transform = `rotate(${minDeg}deg)`;
+            secEl.style.transform = `rotate(${secDeg}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to set the correct time on load
+    </script>
+</body>
+</html>
